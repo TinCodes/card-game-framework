@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://vmdf8td33lkq"]
+
+[ext_resource type="Script" uid="uid://2a78ssg2komi" path="res://Scripts/MobileMain.gd" id="1_qxtr8"]
+[ext_resource type="PackedScene" uid="uid://b76lnf7cp42b8" path="res://Scenes/Mobile/mobile_screen.tscn" id="2_j58np"]
+
+[node name="MainMobile" type="Node2D"]
+script = ExtResource("1_qxtr8")
+
+[node name="MobileScreen" parent="." instance=ExtResource("2_j58np")]
