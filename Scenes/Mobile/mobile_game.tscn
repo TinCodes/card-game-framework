@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://cefig7wffbbpk"]
+
+[ext_resource type="Script" uid="uid://gyjgrwtvebts" path="res://Scripts/Mobile/MobileGame.gd" id="1_mow5u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdd3r"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.241541, 0.386397, 0.855128, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.6, 0.6, 0.6, 0.196078)
+shadow_size = 4
+shadow_offset = Vector2(1, 1)
+
+[node name="MobileGame" type="Node2D"]
+script = ExtResource("1_mow5u")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="Info" type="Panel" parent="HUD"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 640.0
+offset_bottom = 256.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bdd3r")
+
+[node name="Label" type="Label" parent="HUD/Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -64.0
+offset_right = 256.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.166674, 0.235135, 0.833647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 65
+text = "Connected!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="HUD"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 384.0
+offset_right = 512.0
+offset_bottom = 512.0
+text = "Send Test Data"
+
+[node name="Debug" type="Panel" parent="HUD"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 640.0
+offset_right = 640.0
+offset_bottom = 1216.0
+
+[node name="DebugText" type="RichTextLabel" parent="HUD/Debug"]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 576.0
+fit_content = true
+scroll_following = true
+vertical_alignment = 2

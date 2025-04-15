@@ -11,5 +11,7 @@ export_presets.cfg
 *.translation
 
 # Custom ignores
+android/
 exports/
-addons/godot-git-plugin/
+addons/
+network_config.cfg

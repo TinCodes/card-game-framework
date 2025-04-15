@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b76lnf7cp42b8"]
 
-[ext_resource type="Script" uid="uid://b61yuaw3cdlhb" path="res://Scripts/MobileScreen.gd" id="1_004x6"]
+[ext_resource type="Script" uid="uid://b61yuaw3cdlhb" path="res://Scripts/Mobile/MobileScreen.gd" id="1_004x6"]
 [ext_resource type="Texture2D" uid="uid://6wd4apefr1ik" path="res://Img/icon.svg" id="2_004x6"]
 
 [node name="MobileScreen" type="Node2D"]
@@ -50,5 +50,5 @@ texture = ExtResource("2_004x6")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Menu/Button" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="Menu/Button" to="." method="_on_button_down"]
 [connection signal="text_changed" from="Menu/PlayerName" to="." method="_on_player_name_text_changed"]
