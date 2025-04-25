@@ -8,7 +8,7 @@ func _ready():
 		call_deferred("load_pc_ui")
 
 func load_mobile_ui():
-	get_tree().change_scene_to_file("res://Scenes/Mobile/main_mobile.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Mobile/mobile_main.tscn")
 
 func load_pc_ui():
-	get_tree().change_scene_to_file("res://Scenes/PC/pc_screen.tscn")
+	get_tree().change_scene_to_file("res://Scenes/PC/pc_main.tscn")

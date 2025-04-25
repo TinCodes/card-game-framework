@@ -3,9 +3,7 @@ extends Control
 var ADDRESS = "127.0.0.1" # fallback IP
 var PORT = 6789 # fallback port
 
-signal game_start
 signal debug_print
-
 
 var peer
 var card_db_ref
@@ -24,7 +22,7 @@ func _ready() -> void:
 
 func _load_config():
 	var config = ConfigFile.new()
-	var err = config.load("res://Scripts/config/network_config.cfg")
+	var err = config.load("res://config/network_config.cfg")
 	if err == OK:
 		ADDRESS = config.get_value("network", "address", ADDRESS)
 		PORT = config.get_value("network", "port", PORT)
@@ -65,6 +63,7 @@ func connect_to_server(player_data: Player):
 	# Set data before creating peer
 	pending_player_data = player_data
 	# Create peer to make connection
+	print(ADDRESS)
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client(ADDRESS, PORT)
 	if error != OK:
@@ -72,14 +71,6 @@ func connect_to_server(player_data: Player):
 		return
 	multiplayer.multiplayer_peer = peer
 	print("Client peer created")
-
-@rpc("call_local")
-func start_game():
-	if multiplayer.is_server():
-		pass
-	else:
-		print("Starting game...")
-		game_start.emit()
 
 @rpc("any_peer", "reliable")
 func register_player(player_data: Dictionary, peer_id: int):
@@ -97,7 +88,23 @@ func register_player(player_data: Dictionary, peer_id: int):
 	GameManager.Players[peer_id] = new_player
 	debug_print.emit("Player registered: " + str(peer_id) + " [" + new_player.player_name + "]")
 	print("Player registered with info: ", new_player.to_string())
-	
+
+@rpc("call_local")
+func initialize_game(scene_name: String):
+	if SceneManager:
+		if !multiplayer.is_server():
+			SceneManager.load_scene(scene_name)
+	else:
+		print("SceneManager not found")
+
+# Send signal to initialize
+#rpc_id(id, "initialize_client")
+
+# Update game for everyone
+#send_game_state_to_clients()
+
+#@rpc("any_peer", "call_local")
+#func send_player_info(player_data: Player, peer_id: int):
 	# Send player info
 	#rpc("update_client_game_state", player_data)
 	
@@ -106,13 +113,4 @@ func register_player(player_data: Dictionary, peer_id: int):
 	# Prompt server to send any other data
 	#if prompt_master_for_extras():
 		#send_extra_data(id)
-	
-	# Send signal to initialize
-	#rpc_id(id, "initialize_client")
-	
-	# Update game for everyone
-	#send_game_state_to_clients()
-
-@rpc("any_peer", "call_local")
-func send_player_info(player_data: Player, peer_id: int):
-	pass
+	#pass

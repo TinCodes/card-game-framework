@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://b76lnf7cp42b8"]
 
-[ext_resource type="Script" uid="uid://b61yuaw3cdlhb" path="res://Scripts/Mobile/MobileScreen.gd" id="1_004x6"]
+[ext_resource type="Script" uid="uid://b61yuaw3cdlhb" path="res://Scripts/Mobile/MobileLogin.gd" id="1_004x6"]
 [ext_resource type="Texture2D" uid="uid://6wd4apefr1ik" path="res://Img/icon.svg" id="2_004x6"]
 
-[node name="MobileScreen" type="Node2D"]
+[node name="MobileLogin" type="Node2D"]
 script = ExtResource("1_004x6")
 
 [node name="Menu" type="Control" parent="."]
@@ -11,15 +11,22 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 1280.0
-metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Menu"]
 z_index = -1
-layout_mode = 0
-offset_right = 720.0
-offset_bottom = 1280.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -640.0
+offset_right = 360.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0.243137, 0.45098, 0.705882)
-metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="Menu"]
 layout_mode = 0

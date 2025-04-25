@@ -1,6 +1,5 @@
 extends Node2D
 
-const PORT = 9000
 var card_db_ref
 var send_cards_HUD_ref
 
@@ -14,24 +13,12 @@ func _ready():
 	# Debug
 	Network.debug_print.connect(_on_debug)
 
-#func _on_client_connected(id):
-	#$RichTextLabel.text += "\nClient connected: " + str(id)
-	
-	# Prompt server to choose whether to send a full deck or individual cards
-	#prompt_master_for_cards(id)
-	# Prompt server to send any other data
-	#if prompt_master_for_extras():
-		#send_extra_data(id)
-	
-	# Send signal to initialize
-	#rpc_id(id, "initialize_client")
-	
-	# Update game for everyone
-	#send_game_state_to_clients()
-
 func _on_host_pressed() -> void:
 	# Create server
 	Network.start_server()
+
+func _on_init_pressed() -> void:
+	Network.initialize_game.rpc("Mobile/mobile_game")
 
 func prompt_master_for_cards(id):
 	$HUD.add_child(send_cards_HUD_ref)

@@ -8,6 +8,7 @@ func _ready():
 	$InfoBox/Send.hide()
 	$InfoBox/Cancel.hide()
 	$InfoBox/CardList.hide()
+
 	# Populate list with card names
 	var card_db = preload("res://Scripts/DBs/CardDatabase.gd")
 	for card_name in card_db.CARDS.keys():
