@@ -15,47 +15,66 @@ offset_bottom = 1280.0
 [node name="ColorRect" type="ColorRect" parent="Menu"]
 z_index = -1
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.243137, 0.45098, 0.705882)
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -360.0
-offset_top = -640.0
-offset_right = 360.0
-offset_bottom = 640.0
+offset_left = -225.0
+offset_top = -412.0
+offset_right = 223.0
+offset_bottom = -156.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.243137, 0.45098, 0.705882)
+texture = ExtResource("2_004x6")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Button" type="Button" parent="Menu"]
-layout_mode = 0
-offset_left = 247.0
-offset_top = 784.0
-offset_right = 447.0
-offset_bottom = 874.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = 128.0
+offset_right = 257.0
+offset_bottom = 262.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
 text = "Connect"
 icon_alignment = 1
 vertical_icon_alignment = 0
-metadata/_edit_use_anchors_ = true
 
 [node name="PlayerName" type="LineEdit" parent="Menu"]
-layout_mode = 0
-offset_left = 107.0
-offset_top = 696.0
-offset_right = 602.0
-offset_bottom = 755.0
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Menu"]
-layout_mode = 0
-offset_left = 123.0
-offset_top = 232.0
-offset_right = 584.0
-offset_bottom = 558.0
-texture = ExtResource("2_004x6")
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -48.0
+offset_right = 248.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+placeholder_text = "Username"
 
 [connection signal="button_down" from="Menu/Button" to="." method="_on_button_down"]
 [connection signal="text_changed" from="Menu/PlayerName" to="." method="_on_player_name_text_changed"]

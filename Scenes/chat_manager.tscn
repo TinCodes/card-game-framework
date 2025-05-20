@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://decxv6kixq4lb"]
+
+[ext_resource type="Script" uid="uid://c3b2fg4hdxal8" path="res://Scripts/ChatManager.gd" id="1_vl4q8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vl4q8"]
+bg_color = Color(0.994476, 0.873282, 0.671774, 1)
+
+[node name="ChatManager" type="Control"]
+custom_minimum_size = Vector2(250, 160)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 304.0
+script = ExtResource("1_vl4q8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_bottom = 1.07199
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vl4q8")
+horizontal_scroll_mode = 0
+
+[node name="Messages" type="VBoxContainer" parent="ScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="ChatBox" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.632
+anchor_right = 1.0
+anchor_bottom = 0.842
+offset_top = -0.128006
+offset_bottom = 0.0319824
+wrap_mode = 1
+
+[node name="ChatTargetSelector" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.632
+offset_bottom = -0.128006
+grow_horizontal = 2
+grow_vertical = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Everyone"
+popup/item_0/id = 0
+
+[node name="Send" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.842
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0319824
+text = "Send"
+
+[connection signal="gui_input" from="ChatBox" to="." method="_on_chatbox_input"]
+[connection signal="text_changed" from="ChatBox" to="." method="_on_text_changed"]
+[connection signal="pressed" from="Send" to="." method="_on_send_button_pressed"]
